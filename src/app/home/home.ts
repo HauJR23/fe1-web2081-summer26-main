@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './home.css',
 })
 export class Home {
+  name = 'Nguyen Van A';
+  age = 25;
+  message = '';
 
+  showMessage(): void {
+    this.message = 'Bạn đã click button';
+  }
 }
