@@ -1,0 +1,23 @@
+<h2>Dng ky tai khoan</h2>
+
+<form [formGroup]="addForm" (ngSubmit)="submitForm()">
+  <div>
+    <label>Tên </label>
+    <input type="text" formControlName="username" />
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input type="text" formControlName="email" />
+  </div>
+
+  <div>
+    <label>MAt Khau</label>
+    <input type="text" formControlName="password" />
+    @if (password?.invalid && password?.touched){
+        <p> Password ko hop le</p>
+    }
+  </div>
+
+  <button  type="submit" [disabled]="addForm.invalid">Thêm ten</button>
+</form>
