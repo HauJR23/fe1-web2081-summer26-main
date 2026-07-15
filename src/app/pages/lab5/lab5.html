@@ -1,0 +1,32 @@
+<h2>Danh sách truyện</h2>
+
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<table *ngIf="!loading && stories.length > 0" border="1" cellpadding="10" cellspacing="0">
+	<tr>
+		<th>ID</th>
+		<th>Tên truyện</th>
+		<th>Tác giả</th>
+		<th>Lượt xem</th>
+		<th>Hành động</th>
+	</tr>
+
+	<tr *ngFor="let story of stories; trackBy: trackById">
+		<td>{{ story.id }}</td>
+		<td>{{ story.title }}</td>
+		<td>{{ story.author }}</td>
+		<td>
+			{{ story.views }}
+			<span *ngIf="story.views > 90000" class="hot">HOT</span>
+		</td>
+		<td>
+			<button (click)="deleteStory(story.id)" [disabled]="deletingId === story.id">
+				<span *ngIf="deletingId === story.id">Đang xóa...</span>
+				<span *ngIf="deletingId !== story.id">Xóa</span>
+			</button>
+		</td>
+	</tr>
+</table>
+
+<div *ngIf="!loading && stories.length === 0">Không có truyện nào được tìm thấy.</div>
